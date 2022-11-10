@@ -1,0 +1,22 @@
+SLICE:
+select distinct branch,no_stud,class from fact_table where yr=2018;
+
+
+ROLLUP:
+select distinct branch,yr,sum(no_stud) from fact_table group by ROLLUP(branch,yr);
+
+
+PIVOT:
+SELECT (ColumnNames) 
+FROM (TableName) 
+PIVOT
+ ( 
+   AggregateFunction(ColumnToBeAggregated)
+   FOR PivotColumn IN (PivotColumnValues)
+ ) AS (Alias)
+
+
+DICE:
+select * from fact_table where (class=10 or class=9) and (branch='Kandivali' or 'branch='Malad');
+
+
